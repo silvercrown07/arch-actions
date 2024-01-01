@@ -1,0 +1,11 @@
+name: pactree
+on: push
+jobs:
+  pactree:
+    runs-on: ubuntu-22.04
+    container:
+      image: archlinux:latest
+    steps:
+      - run: pacman --noconfirm -Syu pacman-contrib
+      - run: pactree --ascii --sync base
+      - run: pactree --ascii --sync base-devel
